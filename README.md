@@ -1,7 +1,7 @@
 # Panty App
 
 Using the stack below. Build the following app.
-We'll provide you with a repo to push the code. We should be able to run your project so provide any necessary documentation.
+Push your code to this repo. We should be able to run your project so provide any necessary documentation.
 
 We would also like to see test.
 
