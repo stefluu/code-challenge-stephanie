@@ -9,7 +9,7 @@ Spend no more than 2 hours on this problem. If you don't get finished in 2 hours
 
 ## Stack
 - PosgreSQL
-- Python
+- Python or Ruby On Rails
 
 ## App
 Build a pantry application that tracks the items that are in a pantry. The items should be stored in the database. 
