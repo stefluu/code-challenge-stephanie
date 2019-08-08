@@ -16,7 +16,7 @@ class FoodItemsController < ApplicationController
     def show
         @food_item = FoodItem.find(params[:id])
         if @food_item
-            render food_item_url(@food_item)
+            render :show
         else
             flash.now[:errors] = @food_item.errors.full_messages
             redirect_to food_items_url(@food_item)
