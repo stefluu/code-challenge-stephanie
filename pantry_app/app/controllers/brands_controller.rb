@@ -14,9 +14,9 @@ class BrandsController < ApplicationController
     end
 
     def show
-        @brand = Brand.find(brand_params)
+        @brand = Brand.find(params[:id])
         if @brand
-            render :show
+            render brand_url(@brand)
         else
             flash.now[:errors] = @brand.errors.full_messages
             redirect_to brands_url(@brand)
@@ -28,11 +28,11 @@ class BrandsController < ApplicationController
     end
 
     def edit
-        @brand = Brand.find(brand_params)
+        @brand = Brand.find(params[:id])
     end
 
     def update
-        @brand = Brand.find(brand_params)
+        @brand = Brand.find(params[:id])
         if @brand.update_attributes(brand_params)
             redirect_to brand_url(@brand)
         else

@@ -35,6 +35,7 @@ class FoodItemsController < ApplicationController
         @food_item = FoodItem.find(params[:id])
         if @food_item.update_attributes(food_item_params)
             redirect_to food_item_url(@food_item)
+        end
     end
     
     def destroy

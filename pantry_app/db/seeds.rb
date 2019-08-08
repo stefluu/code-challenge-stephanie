@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+shelf1 = Shelf.create({name: "Shelf 1"})
+
+section1 = Section.create({name: "Pasta", shelf_id: 1})
+
+food_item1 = FoodItem.create({name: "Spaghetti", section_id: 1, brand_id: 1, quantity: 3})
+
+brand1 = Brand.create({name: "Trader Joe's"})
