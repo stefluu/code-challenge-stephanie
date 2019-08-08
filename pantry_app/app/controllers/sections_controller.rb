@@ -4,12 +4,16 @@ class SectionsController < ApplicationController
     end
 
     def create
-        @section = Section.new(section_params)
-       
-       unless @section.save!
+        begin
+            @section = Section.new(section_params)
+        
+            if @section.save!
+                redirect_to section_url(@section)
+            end
+        rescue
             flash.now[:errors] = @section.errors.full_messages
+            redirect_to sections_url(@section)
         end
-        redirect_to sections_url(@section)
     end
 
     def index
@@ -17,7 +21,12 @@ class SectionsController < ApplicationController
     end
 
     def show
-        @section = Section.find(params[:id])
+        begin
+            @section = Section.find(params[:id])
+        rescue
+            ActiveRecord::RecordNotFound
+            redirect_to sections_url()
+        end
     end
 
     def edit
@@ -42,6 +51,6 @@ class SectionsController < ApplicationController
 
     private
     def section_params
-        params.require(:section).permit(:name, :quantity)
+        params.require(:section).permit(:name, :shelf_id)
     end
 end

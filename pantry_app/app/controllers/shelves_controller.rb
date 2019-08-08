@@ -5,7 +5,12 @@ class ShelvesController < ApplicationController
     end
 
     def show
-        @shelf = Shelf.find(params[:id])
+        begin
+            @shelf = Shelf.find(params[:id])
+        rescue
+            ActiveRecord::RecordNotFound
+            redirect_to shelves_url()
+        end
     end
 
 
