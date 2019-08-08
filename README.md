@@ -25,6 +25,7 @@ There should be an API layer that exposes `GET`, `PUT`,`POST`,`PATCH`, and `DELE
 ## To Run Specs
 - Change into pantry_app directory
 - Bundle install
+- Run rails db:seed to seed database
 - From root pantry_app, run specs with the following command:
 
 bundle exec rspec spec/model/ (spec file you want to run)
