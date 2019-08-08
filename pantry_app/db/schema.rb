@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_170152) do
+ActiveRecord::Schema.define(version: 2019_08_08_184017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_08_08_170152) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_brands_on_name"
   end
 
   create_table "food_items", force: :cascade do |t|
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_08_08_170152) do
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 0
     t.index ["brand_id"], name: "index_food_items_on_brand_id"
+    t.index ["name"], name: "index_food_items_on_name"
     t.index ["section_id"], name: "index_food_items_on_section_id"
   end
 
@@ -37,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_08_08_170152) do
     t.integer "shelf_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_sections_on_name"
     t.index ["shelf_id"], name: "index_sections_on_shelf_id"
   end
 
@@ -44,6 +47,7 @@ ActiveRecord::Schema.define(version: 2019_08_08_170152) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_shelves_on_name"
   end
 
 end

@@ -16,7 +16,7 @@ class BrandsController < ApplicationController
     def show
         @brand = Brand.find(params[:id])
         if @brand
-            render brand_url(@brand)
+            render :show
         else
             flash.now[:errors] = @brand.errors.full_messages
             redirect_to brands_url(@brand)
