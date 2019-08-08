@@ -3,5 +3,5 @@ class Shelf < ApplicationRecord
     
     has_many :sections
     has_many :food_items, through: :sections
-    has_many :brands, through: food_items
+    has_many :brands, through: :food_items
 end
