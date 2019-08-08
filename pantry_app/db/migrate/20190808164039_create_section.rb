@@ -6,6 +6,6 @@ class CreateSection < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :sectons, :shelf_id
+    add_index :sections, :shelf_id
   end
 end
