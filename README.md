@@ -1,5 +1,7 @@
 # Panty App
 
+##See bottom for run instructions for specs
+
 Using the stack below. Build the following app.
 Push your code to this repo. We should be able to run your project so provide any necessary documentation.
 
@@ -19,3 +21,18 @@ There should be an API layer that exposes `GET`, `PUT`,`POST`,`PATCH`, and `DELE
 - Secure the API with some kind of authentication.
 - Add some form of relationship in the database. For example maybe there are `products` and `brands` and a `brand` has multiple `products`
 - Containerize the project (docker)
+
+## To Run Specs
+- Change into pantry_app directory
+- Bundle install
+- From root pantry_app, run specs with the following command:
+
+bundle exec rspec spec/model/ (spec file you want to run)
+
+-Below are the spec files that can be run:
+
+bundle exec rspec spec/models/shelf_spec.rb
+bundle exec rspec spec/models/section_spec.rb
+bundle exec rspec spec/models/food_item_spec.rb
+bundle exec rspec spec/models/brand_spec.rb
+
