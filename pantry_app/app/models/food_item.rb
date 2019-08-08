@@ -1,5 +1,6 @@
 class FoodItem < ApplicationRecord
     validates :name, presence: true, uniqueness: true
+    validates :quantity, presence: true
     validates :section_id, presence: true
     validates :brand_id, presence: true
 
