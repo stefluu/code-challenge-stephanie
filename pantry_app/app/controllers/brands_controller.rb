@@ -4,24 +4,17 @@ class BrandsController < ApplicationController
     end
 
     def create
-        begin
-            @brand = Brand.new(brand_params)
-            if @brand.save!
-                redirect_to brand_url(@brand)
-            end
-        rescue
+        @brand = Brand.new(brand_params)
+        if @brand.save!
+            redirect_to brand_url(@brand)
+        else
             flash.now[:errors] = @brand.errors.full_messages
-            redirect_to brands_url(@brand)
+            render :index
         end
     end
 
     def show
-        begin
-            @brand = Brand.find(params[:id])
-        rescue
-            ActiveRecord::RecordNotFound
-            redirect_to brands_url()
-        end
+        @brand = Brand.find(params[:id])
     end
 
     def index
@@ -37,7 +30,7 @@ class BrandsController < ApplicationController
         if @brand.update_attributes(brand_params)
             redirect_to brand_url(@brand)
         else
-            flash.now[:errors] = @brand.errors.full_messages
+            flash[:errors] = @brand.errors.full_messages
             redirect_to brand_url(@brand)
         end
     end
@@ -45,7 +38,7 @@ class BrandsController < ApplicationController
     def destroy
         @brand = Brand.find(params[:id])
         @brand.destroy
-        redirect_to brands_url(@brand)
+        redirect_to brands_url()
     end
 
     private

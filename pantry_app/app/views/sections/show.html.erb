@@ -1,1 +1,18 @@
-"show page for section"
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title><%= @section.name %> </title>
+  </head>
+  <body>
+    <p>Section Name: <%= @section.name %></p>
+    <p>Shelf Number: <%= @section.shelf_id %></p>
+    <p>Foods Included: </p>
+     <% @section.food_items.each do |food| %>
+        <ul>
+            <li><%= food.name %></li>
+        </ul>
+    <% end %>
+  </body>
+</html>

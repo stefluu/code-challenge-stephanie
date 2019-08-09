@@ -4,25 +4,17 @@ class FoodItemsController < ApplicationController
     end
 
     def create
-        begin
-            @food_item = FoodItem.new(food_item_params)
-            if @food_item.save!
-                redirect_to food_item_url(@food_item)
-            end
-        rescue
-            flash.now[:errors] = @food_item.errors.full_messages
+        @food_item = FoodItem.new(food_item_params)
+        if @food_item.save!
+            redirect_to food_item_url(@food_item)
+        else
+            flash[:errors] = @food_item.errors.full_messages
             redirect_to new_food_item_url(@food_item)
         end
     end
 
     def show
-        begin
-            @food_item = FoodItem.find(params[:id])
-        rescue
-            ActiveRecord::RecordNotFound
-            redirect_to food_items_url()
-        end
-
+        @food_item = FoodItem.find(params[:id])
     end
 
     def index
@@ -36,7 +28,10 @@ class FoodItemsController < ApplicationController
     def update
         @food_item = FoodItem.find(params[:id])
         if @food_item.update_attributes(food_item_params)
-            redirect_to food_item_url(@food_item)
+            render :show
+        else
+            flash[:errors] = @food_item.errors.full_messages
+            redirect_to section_url(@food_item)
         end
     end
     

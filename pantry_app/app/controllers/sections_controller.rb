@@ -4,15 +4,14 @@ class SectionsController < ApplicationController
     end
 
     def create
-        begin
-            @section = Section.new(section_params)
         
-            if @section.save!
-                redirect_to section_url(@section)
-            end
-        rescue
-            flash.now[:errors] = @section.errors.full_messages
-            redirect_to sections_url(@section)
+        @section = Section.new(section_params)
+    
+        if @section.save!
+            redirect_to section_url(@section)
+        else
+            flash[:errors] = @section.errors.full_messages
+            redirect_to new_section_url(@section)
         end
     end
 
@@ -21,32 +20,27 @@ class SectionsController < ApplicationController
     end
 
     def show
-        begin
-            @section = Section.find(params[:id])
-        rescue
-            ActiveRecord::RecordNotFound
-            redirect_to sections_url()
-        end
+        @section = Section.find(params[:id])
     end
 
     def edit
-        @section = Section.find(params[:id])
+        @section = Section.find_by_id(params[:id])
     end
 
     def update
-        @section = Section.find(params[:id])
+        @section = Section.find_by_id(params[:id])
         if @section.update_attributes(section_params)
             redirect_to section_url(@section)
         else
-            flash.now[:errors] = @section.errors.full_messages
+            flash[:errors] = @section.errors.full_messages
             redirect_to section_url(@section)
         end
     end
 
     def destroy
-        @section = Section.find(params[:id])
+        @section = Section.find_by_id(params[:id])
         @section.destroy
-        redirect_to sections_url(@section)
+        redirect_to sections_url()
     end
 
     private

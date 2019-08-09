@@ -1,1 +1,18 @@
-"index page for section"
+<table>
+    <th>Section Name</th>
+    <th> Foods Included:</th>
+
+    <% @sections.each do |sec| %>
+        <tr>
+            <td><%= sec.name %> </td>
+            <td>
+                <% sec.food_items.each do |food| %>
+                    <ul>
+                        <li><%= food.name %></li>
+                    </ul>
+                <% end %>
+            </td>
+        </tr>
+    <% end %>
+
+</table>
