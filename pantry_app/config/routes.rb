@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :sections
   resources :food_items
   resources :brands
+
+  root 'static#root'
 end

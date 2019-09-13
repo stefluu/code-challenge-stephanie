@@ -15,10 +15,17 @@ class FoodItemsController < ApplicationController
 
     def show
         @food_item = FoodItem.find(params[:id])
+
+       render json: FoodItemSerializer.new(@food_item)
     end
 
     def index
         @food_items = FoodItem.all
+        foods =
+            FoodItem.all.map do |food|
+                FoodItemSerializer.new(food)
+            end
+        render json: {foods: foods}
     end
 
     def edit

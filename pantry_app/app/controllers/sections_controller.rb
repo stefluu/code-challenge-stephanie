@@ -21,6 +21,7 @@ class SectionsController < ApplicationController
 
     def show
         @section = Section.find(params[:id])
+        render json: SectionSerializer.new(@section)
     end
 
     def edit
